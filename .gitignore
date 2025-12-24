@@ -1,0 +1,38 @@
+# Environment variables
+.env
+
+# API Keys configuration
+revyops_keys.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Client data folders (user-generated content)
+[Bb]uzzlead/
+[Mm]acmoor/
+[A-Za-z]*/
+!mappings/
+
+# Test/example data folders
+input/
+output/
+

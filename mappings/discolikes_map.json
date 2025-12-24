@@ -1,0 +1,19 @@
+{
+  "Domain": "Domain",
+  "Name": "Name",
+  "Industry Groups": "Industry",
+  "Employees": "Employee Count",
+  "Description": "Description",
+  "Keywords": "Keywords",
+  "TAGLINE": "Tagline",
+  "City": "City",
+  "State": "State",
+  "Country": "Country",
+  "Street": "Address",
+  "Zip": "Zip Code",
+  "Start Date": "Founded Date",
+  "Social URLs": "All Social URL's",
+  "Phones": "Phone Number",
+  "Public Emails": "General Emails",
+  "Discolikes": "Source"
+}

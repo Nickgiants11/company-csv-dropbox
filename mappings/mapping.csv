@@ -1,0 +1,39 @@
+RevyOps Schema (Map Headers Here),Crunchbase Company Source Column,Crunchbase Headers,Discolikes Headers,AIARK Headers,Apollo Headers,LinkedIn Headers,Google Maps Headers
+Domain,,website,Domain,Website URL,Company Domain,Domain,website
+Name,name,name,Name,Company Name,Company Name for Emails,Name,title
+LinkedIn URL,linkedin,linkedin,,LinkedIn URL,Company Linkedin Url,Linkedin URL,
+Industry,categories,category_groups,Industry Groups,Industry,Industry,Primary Industry,type
+Employee Count,num_employees,num_employees,Employees,Employee Size,# Employees,Size,
+Description,description,description,Description,Description,Short Description,Description,Description
+Estimated Revenue,revenue_range,revenue_range,,Annual Revenue,Annual Revenue,Annual Revenue,
+Keywords,category_groups,,Keywords,Product and Services,Keywords,Pattern Tags,
+Tagline,ADDED CUSTOM TAG,Tagline,Tagline,Tagline,Tagline,Tagline,Tagline
+Website URL,website,website,,Website URL,Website,,
+Subindustry,,categories,,,,Subindustry,types
+City,city,city,City,Company City,Company City,,
+State,state,state,State,Company State,Company State,,
+Country,country,country,Country,Company Country,Company Country,Country,
+Location,locations,locations,,Company Address,,Location,
+Address,,,Street,,Company Street Address,,Address
+Zip Code,hq_postal_code,hq_postal_code,Zip,Postal Code,Company Postal Code,,
+Technologies Used,,,,Technologies,Technologies,,
+Founded Date,founded_on,founded_on,Start Date,Founding Year,Founded Year,,
+Facebook URL,,,,Facebook URL,Facebook Url,,
+Twitter URL,twitter,twitter,,X (Twitter) URL,Twitter Url,,
+All Social URL's,,,Social URLs,,,,
+Phone Number,phone_number,phone_number,Phones,Primary Company Phone,,,phoneNumber
+General Emails,contact_email,contact_email,Public Emails,,,,
+IPO Status,ipo_status,ipo_status,,,,,
+Business Type,,company_type,,Company Type,,Business Type,
+Rating,,,,,,,rating
+Review Count,,,,,,,ratingCount
+Number of Locations,,location_groups,,Number of Locations,Number of Retail Locations,,
+Total Funding,funding_total_usd,funding_total_usd,,Total Funding Amount,Total Funding,Total Funding Amount Range USD,
+Last Funding Date,last_funding_at,last_funding_at,,Last Funding Date,,,
+Last Funding Amount,last_funding_total_usd,equity_funding_total_usd,,Last Funding Amount,Latest Funding Amount,,
+Funding Stage,funding_stage,funding_stage,,Last Funding Type,,,
+Number of Founders,num_founders,num_founders,,,,,
+Source,Crunchbase,Crunchbase,Discolikes,AI-Ark,Apollo,Clay,Google Maps
+Founders,founders,,,,,,
+Latitude,,,,,,,latitude
+Longitude,,,,,,,longitude
