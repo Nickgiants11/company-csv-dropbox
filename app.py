@@ -255,6 +255,33 @@ def read_csv_from_upload(uploaded_file) -> pd.DataFrame:
         return pd.read_csv(uploaded_file, dtype=str, keep_default_na=False, encoding="latin-1")
 
 
+# Password Authentication
+# Get password from Streamlit secrets (for cloud deployment) or environment variable, or use default
+try:
+    APP_PASSWORD = st.secrets.get("app_password", os.getenv("APP_PASSWORD", "Leadgeneration2025$"))
+except:
+    # Fallback if secrets not available (local development)
+    APP_PASSWORD = os.getenv("APP_PASSWORD", "Leadgeneration2025$")
+
+# Check authentication
+if "authenticated" not in st.session_state:
+    st.session_state.authenticated = False
+
+if not st.session_state.authenticated:
+    st.set_page_config(page_title="Company CSV DropBox - Login", page_icon="🔒", layout="centered")
+    st.title("🔒 Company CSV DropBox")
+    st.markdown("Please enter the password to access the application.")
+    
+    password_input = st.text_input("Password", type="password", key="password_input")
+    
+    if st.button("Login", type="primary", use_container_width=True):
+        if password_input == APP_PASSWORD:
+            st.session_state.authenticated = True
+            st.rerun()
+        elif password_input:
+            st.error("❌ Incorrect password. Please try again.")
+    st.stop()
+
 # Streamlit UI
 st.set_page_config(page_title="Company CSV DropBox", page_icon="📊", layout="wide")
 
@@ -330,21 +357,30 @@ CLIENT_WORKSPACE_MAPPING = {
 # Default workspace for clients not in the mapping
 DEFAULT_WORKSPACE = "Master Account (Excludes IDPR, EVO, Incentives, Buzzlead)"
 
-# Load API keys from config file (workspace name -> API key)
-revyops_keys_file = ROOT / "revyops_keys.json"
+# Load API keys from Streamlit Secrets (for cloud deployment) or config file (for local development)
 workspace_api_keys = {}
-if revyops_keys_file.exists():
-    try:
-        with open(revyops_keys_file, 'r') as f:
-            workspace_api_keys = json.load(f)
-    except:
-        workspace_api_keys = {}
+try:
+    # Try to load from Streamlit Secrets first (for cloud deployment)
+    if hasattr(st, 'secrets') and 'revyops_keys' in st.secrets:
+        workspace_api_keys = dict(st.secrets['revyops_keys'])
+except:
+    pass
+
+# Fallback to local file if secrets not available
+if not workspace_api_keys:
+    revyops_keys_file = ROOT / "revyops_keys.json"
+    if revyops_keys_file.exists():
+        try:
+            with open(revyops_keys_file, 'r') as f:
+                workspace_api_keys = json.load(f)
+        except:
+            workspace_api_keys = {}
 
 # Determine which workspace to use based on client name
 client_name_normalized = client_name.strip()
 workspace_name = CLIENT_WORKSPACE_MAPPING.get(client_name_normalized, DEFAULT_WORKSPACE)
 
-# Get API key for the workspace
+# Get API key for the workspace (check Streamlit Secrets first, then local file, then env var)
 default_api_key = ""
 if workspace_name in workspace_api_keys:
     default_api_key = workspace_api_keys[workspace_name]
@@ -371,7 +407,7 @@ revyops_api_key = st.text_input(
     value=st.session_state.get('revyops_api_key', default_api_key),
     type="password",
     key=f"revyops_key_{workspace_name}",  # Dynamic key forces update when workspace changes
-    help=f"API key for {workspace_name}. Auto-loaded from revyops_keys.json if configured. You can also set a default in .env as REVYOPS_API_KEY.",
+    help=f"API key for {workspace_name}. Auto-loaded from Streamlit Secrets (cloud) or revyops_keys.json (local). You can also set a default in .env as REVYOPS_API_KEY.",
     placeholder="Enter API key or it will auto-load from config"
 )
 
