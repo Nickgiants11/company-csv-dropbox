@@ -258,10 +258,10 @@ def read_csv_from_upload(uploaded_file) -> pd.DataFrame:
 # Password Authentication
 # Get password from Streamlit secrets (for cloud deployment) or environment variable, or use default
 try:
-    APP_PASSWORD = st.secrets.get("app_password", os.getenv("APP_PASSWORD", "Leadgeneration2025$"))
+    APP_PASSWORD = st.secrets.get("app_password", os.getenv("APP_PASSWORD", "Buzzlead23$"))
 except:
     # Fallback if secrets not available (local development)
-    APP_PASSWORD = os.getenv("APP_PASSWORD", "Leadgeneration2025$")
+    APP_PASSWORD = os.getenv("APP_PASSWORD", "Buzzlead23$")
 
 # Check authentication
 if "authenticated" not in st.session_state:
