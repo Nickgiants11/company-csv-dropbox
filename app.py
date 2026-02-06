@@ -555,8 +555,9 @@ if st.button("🚀 Normalize & Merge Files", type="primary", use_container_width
                     normalized_df["Name"] = normalized_df["Name"].apply(clean_company_name)
                 
                 # Determine output filename: {Client Name} {Vertical} Accounts {Date}.csv
-                output_filename = f"{client_name.strip()} {vertical.strip()} Accounts {date.strip()}.csv"
-                tagline_value = f"{client_name.strip()} {vertical.strip()} Accounts {date.strip()}"
+                # Use sanitized values to avoid path issues (e.g., "2/6" would create subdirectories)
+                output_filename = f"{safe_client_name} {safe_vertical} Accounts {safe_date}.csv"
+                tagline_value = f"{safe_client_name} {safe_vertical} Accounts {safe_date}"
                 
                 # Set Tagline column to the output filename value (without .csv extension)
                 if "Tagline" in normalized_df.columns:
